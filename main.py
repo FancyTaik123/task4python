@@ -1,50 +1,79 @@
+# Enter data in the format a, b, c, d where a, b, c, d are the number of eggs laid by each hen for the day. An example is 1, 1, 1, 0
+
 import math
+import random
 
-egg_list = []
-total_eggs = 0
 day = 0
+eggs_per_day = []
+hen_data = []
 
-def calculate_eggs(i):
-  total = 0
-  for x in i:
-    total += int(x)
-  return total
+def generate_random_data_cuz_im_lazy():
+  l = ""
+  for x in range(4):
+    i = random.randint(0, 1)
+    i = str(i)
+    if (x < 3):
+      l = l + "{}, ".format(i)
+    else:
+      l = l + "{}".format(i)
+  return l
 
-def validate_egg_data(i):
+def check_each_data(data):
+  for x in data:
+    x = int(x)
+    if (not x):
+      return False
+
+    if (x == 1) or (x == 0):
+      return True
+
+def get_total(data):
   total = 0
-  for x in i:
+  for x in data:
     x = int(x)
     total += x
-    if (x < 0):
-      return False, total
-    elif (x > 1):
-      return False, total  
-  return True, total
+  return total
 
 while (day < 7):
-  number_of_eggs = str(input("Enter the number of eggs hatched by the four hens in the form of a, b, c, d for day {}: ".format(day + 1)))
- 
-  eggs_data = number_of_eggs.split(", ")
-  egg_length = len(eggs_data)
+  egg_data = generate_random_data_cuz_im_lazy()
+  egg_data = egg_data.split(", ")
+  
+  # egg_data = str(input("Enter data in the format a, b, c, d where a, b, c, dare the number of eggs laid by each hen for the day. An example is 1, 1, 1, 0:"))
+  # egg_data = egg_data.split(", ")
+  if (egg_data):
 
-  # if it has 4 inputs, meaning its correct
-  if (egg_length == 4):
-
-    # check that no data has more than 1 or is lesser than 0
-    is_valid, total = validate_egg_data(eggs_data)
-    if (is_valid == True):
+    # Check that each data is either 0 or 1. else. 
+    valid_data = check_each_data(egg_data)
+    if (valid_data == True):
       day += 1
-      egg_list.append(total)
+      total_eggs = get_total(egg_data)
+      eggs_per_day.append(total_eggs)
+
+      # append hen data   
+      if (day == 1):
+        for x in range(len(egg_data)):
+          hen_data.insert(x, int(egg_data[x]))
+      else:
+        for x in range(len(egg_data)):
+          hen_data[x] = hen_data[x] + int(egg_data[x])
     else:
-      print("Your data is invalid. Each data cannot be more than 1 or lesser than 0")
-  # if input is not valid 
+      a = ""
+      # just cancelling this line until manual input cause it keeps saying data is invalid even tho its been proven valid. 
+      # print("Data is invalid. Try again" + str(day))
+      # print(egg_data)
+
   else:
-    print("Data inputted is not a valid form. Please input again.")
+    print("Given egg data is in a invalid form data.")
+
+for x in range(len(eggs_per_day)):
+  print("Day {0}  {1} eggs(s)".format(x + 1, eggs_per_day[x]))
+
+for x in range(len(hen_data)):
+  if (hen_data[x] < 4):
+    print("Hen {0}  {1} eggs(s)".format(x + 1, hen_data[x]))
 
 
-for x in range(len(egg_list)):
-  total_eggs += egg_list[x]
-  print("Day {0} | {1} egg(s)".format(x + 1, egg_list[x]))
+calculated_total = get_total(eggs_per_day)
 
-print("Average number of eggs is {}".format(math.floor(total_eggs / 7)))
-print("Total number of eggs is {}".format(total_eggs))
+print("Average number eggs  {}".format(round(calculated_total / 4)))
+print("Total number of eggs is {}".format(calculated_total))
