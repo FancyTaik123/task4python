@@ -42,13 +42,5 @@ if (barcode_flag == True):
   else:
     check_digit = 10 - remainder 
 
-keyboard_input = input("")
-keyboard_input = keyboard_input.lower()
-
-while (keyboard_input != "q"):
-    keyboard_inpput = input("")
-    keyboard_input = keyboard_input.lower()
-
-if (keyboard_input == "q"):
-    print("The UPCA is {}".format(barcode_upca))
-    print("Check digit is {}".format(math.floor(check_digit)))  
+  print("The UPCA is {}".format(barcode_upca))
+  print("Check digit is {}".format(math.floor(check_digit))) 

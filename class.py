@@ -1,15 +1,9 @@
-class Himan:
-    def __init__(self,age,name):
-        self.age = age
+class glue:
+    def __init__(self, name, age):
         self.name = name
+        self.age = age
     
-    def loo(self):
-        print(self.age,self.name)
-    
-    def died(self):
-        print(self.name,"has died")
-        self
+    def drink_glue(self):
+        print("{} ({}) has just dranked glue!".format(self.name,self.age))
 
-new_himan = Himan(11,"Himanshu")
-new_himan.loo()
-new_himan.died()
+new_glue = glue()
