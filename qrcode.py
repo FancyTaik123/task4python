@@ -8,7 +8,7 @@ odd_result = 0
 remainder = 0
 check_digit = 0
 
-while (not barcode_flag==True):
+while (not barcode_flag == True):
   barcode_upca = str(input("Enter first 11 digits of UPCA-A: "))
   # first check if has 11 digits
 
@@ -46,7 +46,7 @@ keyboard_input = input("")
 keyboard_input = keyboard_input.lower()
 
 while (keyboard_input != "q"):
-    keyboard_input = input("")
+    keyboard_inpput = input("")
     keyboard_input = keyboard_input.lower()
 
 if (keyboard_input == "q"):
