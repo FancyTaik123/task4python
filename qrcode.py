@@ -1,5 +1,5 @@
 import math
-barcode_upca = str(input("Enter first 11 digits of UPCA-A: "))
+
 barcode_flag = False
 valid_barcode_amount = 0
 
@@ -9,8 +9,12 @@ odd_result = 0
 remainder = 0
 check_digit = 0
 
+checK_digit = True or False
+
 while (not barcode_flag==True):
+  barcode_upca = str(input("Enter first 11 digits of UPCA-A: "))
   # first check if has 11 digits
+
   if (len(barcode_upca) < 11) or (len(barcode_upca) > 11):
     print("Invalid input, please re-enter")
   else:
@@ -43,23 +47,3 @@ if (barcode_flag == True):
 
 print("The UPCA is {}".format(barcode_upca))
 print("Check digit is {}".format(math.floor(check_digit)))
-
-
-
-# total_even = 0
-# total_odd = 0
-# num = 12345678910
-# edited_num = str(num)
-# for x in range(11):
-#   if ((x+1) % 2 == 0):
-#     print("This is a even number position")
-#     print(str(edited_num[x]))
-#     total_even += int(edited_num[x])
-#   else:
-#     print("This is a odd number position")
-#     print(str(edited_num[x]))
-#     total_odd += int(edited_num[x])
-  
-
-# print(total_even)
-# print(total_odd)
