@@ -1,5 +1,4 @@
 import math
-
 barcode_flag = False
 valid_barcode_amount = 0
 
@@ -8,8 +7,6 @@ even_result = 0
 odd_result = 0
 remainder = 0
 check_digit = 0
-
-checK_digit = True or False
 
 while (not barcode_flag==True):
   barcode_upca = str(input("Enter first 11 digits of UPCA-A: "))
@@ -45,5 +42,13 @@ if (barcode_flag == True):
   else:
     check_digit = 10 - remainder 
 
-print("The UPCA is {}".format(barcode_upca))
-print("Check digit is {}".format(math.floor(check_digit)))
+keyboard_input = input("")
+keyboard_input = keyboard_input.lower()
+
+while (keyboard_input != "q"):
+    keyboard_input = input("")
+    keyboard_input = keyboard_input.lower()
+
+if (keyboard_input == "q"):
+    print("The UPCA is {}".format(barcode_upca))
+    print("Check digit is {}".format(math.floor(check_digit)))  
