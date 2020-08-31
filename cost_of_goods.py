@@ -1,18 +1,12 @@
-cost = 0
+number_one = float(input("Enter number 1: "))
+number_two = float(input("Enter number 2: "))
 
-amount_of_items = int(input("Enter the amount of items that you bought: "))
-
-if (amount_of_items > 0):
-
-    # if less than 10 items
-    if (amount_of_items < 10):
-        cost = (amount_of_items * 7)
-    elif (amount_of_items >= 10) and (amount_of_items <= 99):
-        cost = (amount_of_items * 10)
-    else:
-        cost = (amount_of_items * 7)
-
-    print("The total cost is ${}".format(cost))
-
+# now determine
+if (number_one == number_two):
+    print("Close")
+elif (abs(number_one - number_two) < 0.001):
+    print("Close")
+elif (abs(number_two - number_one) < 0.001):
+    print("Close")
 else:
-    print("You have inputted a number less that 1.")
+    print("Not close")
